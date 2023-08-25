@@ -1,7 +1,7 @@
-let nums = [4,1,9,7,3,2]
+let nums = [4,1,9,7,3,5,2]
 let target = 14
 
-//완전탐색: 시간초과 - 포기
+//완전탐색: O(n^2)로 시간초과 - 포기
 function list01(nums, target){
     for(let i = 0; i < nums.length; i++){
         if(nums[i] <= target){
@@ -16,19 +16,26 @@ function list01(nums, target){
 }
 
 //내장 sort : O(nlogn)
-//Two Pointer 접근방법 - 정렬된 상태에서 쓰임
+//Two Pointer 접근방법 - 정렬된 상태에서 사용
 function list02(nums, target){
-    let p1 = 0;
-    let p2 = nums.length - 1
+    nums.sort();
 
-    while(0){
-        if(nums[p1] + nums[p2] === target){
+    let left = 0;
+    let right = nums.length - 1
+
+    while(left < right){
+        if(nums[left] + nums[right] > target){
+            right--;
+        }else if(nums[left] + nums[right] < target){
+            left++;
+        }else{
             return true;
-            break;
         }
     }
+
+    return false;
 }
 
 
 
-console.log(list01(nums, target))
+console.log(list02(nums, target))
