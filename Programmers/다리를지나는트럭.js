@@ -26,22 +26,31 @@ class Queue{
 }
 
 function solution(bridge_length, weight, truck_weights) {
-    var answer = 0;
-    let moveTrucks = [];
-    let moveTrucksWeight = 0;
-    let completeTrucks = [];
-    let count = 0;
-
-    // do {
-    //     i = i + 1;
-    //     result = result + i;
-    // } while (bridge_length > moveTrucks.length && weight < moveTrucksWeight );
     
-    return answer;
+    let time = 0;
+
+    let bridge = Array.from({length: bridge_length}, () => 0);
+    let bridge_sum = 0;
+
+    time += 1
+    bridge.shift()
+    bridge_sum += truck_weights[0]
+    bridge.push(truck_weights.shift())
+
+    while (bridge_sum > 0){
+
+        time += 1;
+        bridge_sum -= bridge.shift()
+
+        if(truck_weights.length > 0 && bridge_sum + truck_weights[0] <= weight){
+            bridge_sum += truck_weights[0]
+            bridge.push(truck_weights.shift())
+        }else{
+            bridge.push(0)
+        }
+    }
+
+    return time;
 }
 
-function goTruck(){
-
-}
-
-console.log(solution(2, 10, [7,4,5,6]))
+console.log(solution(100, 100, [10,10,10,10,10,10,10,10,10,10]))
