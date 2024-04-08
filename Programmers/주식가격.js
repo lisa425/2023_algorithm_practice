@@ -5,7 +5,6 @@ function solution(prices) {
         let count = 0
         for(let j=i+1; j<prices.length; j++){
             count += 1;
-            console.log(prices[j], prices[i])
             if(prices[j] < prices[i]){
                 break
             }
