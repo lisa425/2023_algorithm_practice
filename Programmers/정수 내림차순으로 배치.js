@@ -1,3 +1,4 @@
+//문자풀이
 function solution(n) {
   return parseInt(
     (n + '')
@@ -8,6 +9,7 @@ function solution(n) {
   )
 }
 
+//숫자풀이
 function solution2(n) {
   let nums = []
   do {
@@ -16,6 +18,7 @@ function solution2(n) {
     n = Math.floor(n / 10)
   } while (n > 0)
 
+  //*1을 곱해 join에서 문자열이 된 것을 숫자로 다시 형변환
   return nums.sort((a, b) => b - a).join('') * 1
 }
 
