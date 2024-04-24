@@ -2,13 +2,13 @@ function solution(left, right) {
   let answer = 0
 
   for (let i = left; i <= right; i++) {
-    answer = getIsOddDivisor(i) ? answer - i : answer + i
+    answer = isOddDivisor(i) ? answer - i : answer + i
   }
 
   return answer
 }
 
-function getIsOddDivisor(number) {
+function isOddDivisor(number) {
   //약수의 개수가 홀수면 true, 아니면 false
   let index = 1
   let divisorCount = 0
